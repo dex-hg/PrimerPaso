@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Registro preliminar de postulantes en PrimerPaso.">
+    <title>Registro de postulante | PrimerPaso</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/auth.css">
+</head>
+<body class="auth-page">
+    <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
+
+    <header class="auth-header">
+        <div class="container auth-header-inner">
+            <a class="brand-link" href="../index.html" aria-label="PrimerPaso, ir al inicio">
+                <span class="brand-icon" aria-hidden="true"><i class="bi bi-person-workspace"></i></span>
+                <span class="brand-copy"><strong>PrimerPaso</strong><small>Inicia tu camino</small></span>
+            </a>
+            <a class="auth-back-link" href="registro.html"><i class="bi bi-arrow-left" aria-hidden="true"></i> Cambiar tipo de cuenta</a>
+        </div>
+    </header>
+
+    <main class="auth-main" id="main-content">
+        <section class="auth-shell registration-shell" aria-labelledby="applicant-register-title">
+            <div class="registration-heading">
+                <span class="auth-heading-icon" aria-hidden="true"><i class="bi bi-person"></i></span>
+                <h1 id="applicant-register-title">Registro de postulante</h1>
+            </div>
+
+            <ol class="registration-progress" aria-label="Progreso del registro">
+                <li class="is-active" data-step-indicator="1" aria-current="step"><span>1</span><strong>Datos personales</strong></li>
+                <li data-step-indicator="2"><span>2</span><strong>Perfil académico</strong></li>
+                <li data-step-indicator="3"><span>3</span><strong>CV e intereses</strong></li>
+            </ol>
+
+            <form class="registration-form" id="applicant-register-form" data-multi-step novalidate>
+                <section class="registration-step" data-step-panel="1" aria-labelledby="applicant-personal-title">
+                    <div class="social-access social-access-compact">
+                        <button class="social-access-button" type="button"><i class="bi bi-google" aria-hidden="true"></i> Registrarse con Google</button>
+                        <button class="social-access-button" type="button"><i class="bi bi-linkedin" aria-hidden="true"></i> Registrarse con LinkedIn</button>
+                    </div>
+
+                    <div class="form-divider"><span>o crea tu cuenta con otro correo</span></div>
+
+                    <h2 class="form-section-title" id="applicant-personal-title"><i class="bi bi-person" aria-hidden="true"></i> Datos personales</h2>
+
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <label class="form-label" for="applicant-first-name">Nombres</label>
+                            <input class="form-control auth-control" id="applicant-first-name" name="applicant-first-name" type="text" autocomplete="given-name" required>
+                            <div class="invalid-feedback">Ingresa tus nombres.</div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="applicant-last-name">Apellidos</label>
+                            <input class="form-control auth-control" id="applicant-last-name" name="applicant-last-name" type="text" autocomplete="family-name" required>
+                            <div class="invalid-feedback">Ingresa tus apellidos.</div>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label" for="applicant-email">Correo electrónico</label>
+                            <input class="form-control auth-control" id="applicant-email" name="applicant-email" type="email" autocomplete="email" required>
+                            <div class="invalid-feedback">Ingresa un correo electrónico válido.</div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="applicant-password">Contraseña</label>
+                            <input class="form-control auth-control" id="applicant-password" name="applicant-password" type="password" autocomplete="new-password" minlength="8" required>
+                            <div class="invalid-feedback">Usa al menos 8 caracteres.</div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="applicant-password-confirmation">Confirmar contraseña</label>
+                            <input class="form-control auth-control" id="applicant-password-confirmation" name="applicant-password-confirmation" type="password" autocomplete="new-password" minlength="8" data-confirm-password="#applicant-password" required>
+                            <div class="invalid-feedback">Las contraseñas deben coincidir.</div>
+                        </div>
+                    </div>
+
+                    <div class="form-check registration-check">
+                        <input class="form-check-input" id="applicant-terms" name="applicant-terms" type="checkbox" required>
+                        <label class="form-check-label" for="applicant-terms">Acepto los <a href="#">Términos y condiciones</a> y las <a href="#">Políticas de privacidad</a>.</label>
+                        <div class="invalid-feedback">Debes aceptar los términos para continuar.</div>
+                    </div>
+
+                    <div class="registration-actions registration-actions-end">
+                        <button class="btn btn-primary-custom btn-lg" type="button" data-next-step>Siguiente paso</button>
+                    </div>
+                </section>
+
+                <section class="registration-step" data-step-panel="2" aria-labelledby="applicant-academic-title" hidden>
+                    <h2 class="form-section-title" id="applicant-academic-title"><i class="bi bi-mortarboard" aria-hidden="true"></i> Información académica</h2>
+
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <label class="form-label" for="applicant-institution">Universidad o instituto</label>
+                            <input class="form-control auth-control" id="applicant-institution" name="applicant-institution" type="text" required>
+                            <div class="invalid-feedback">Ingresa tu institución.</div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="applicant-career">Carrera profesional</label>
+                            <input class="form-control auth-control" id="applicant-career" name="applicant-career" type="text" required>
+                            <div class="invalid-feedback">Ingresa tu carrera.</div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="applicant-academic-status">Condición académica</label>
+                            <select class="form-select auth-control" id="applicant-academic-status" name="applicant-academic-status" required>
+                                <option value="" selected disabled>Selecciona una opción</option>
+                                <option value="student">Estudiante</option>
+                                <option value="graduate">Egresado</option>
+                                <option value="graduate-degree">Titulado</option>
+                            </select>
+                            <div class="invalid-feedback">Selecciona tu condición académica.</div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="applicant-cycle">Ciclo actual o año de egreso</label>
+                            <input class="form-control auth-control" id="applicant-cycle" name="applicant-cycle" type="text" required>
+                            <div class="invalid-feedback">Completa este campo.</div>
+                        </div>
+                    </div>
+
+                    <fieldset class="form-section-block">
+                        <legend class="form-section-title"><i class="bi bi-code-slash" aria-hidden="true"></i> Habilidades técnicas</legend>
+                        <p class="form-section-help">Selecciona tus principales habilidades. Este campo es opcional.</p>
+                        <div class="skill-options">
+                            <input class="btn-check" type="checkbox" id="applicant-skill-python" name="applicant-skills" value="python">
+                            <label class="skill-chip" for="applicant-skill-python">Python</label>
+                            <input class="btn-check" type="checkbox" id="applicant-skill-sql" name="applicant-skills" value="sql">
+                            <label class="skill-chip" for="applicant-skill-sql">SQL</label>
+                            <input class="btn-check" type="checkbox" id="applicant-skill-java" name="applicant-skills" value="java">
+                            <label class="skill-chip" for="applicant-skill-java">Java</label>
+                            <input class="btn-check" type="checkbox" id="applicant-skill-excel" name="applicant-skills" value="excel">
+                            <label class="skill-chip" for="applicant-skill-excel">Excel</label>
+                            <input class="btn-check" type="checkbox" id="applicant-skill-figma" name="applicant-skills" value="figma">
+                            <label class="skill-chip" for="applicant-skill-figma">Figma</label>
+                            <input class="btn-check" type="checkbox" id="applicant-skill-git" name="applicant-skills" value="git">
+                            <label class="skill-chip" for="applicant-skill-git">Git</label>
+                        </div>
+                    </fieldset>
+
+                    <div class="registration-actions">
+                        <button class="btn btn-soft btn-lg" type="button" data-previous-step>Volver</button>
+                        <button class="btn btn-primary-custom btn-lg" type="button" data-next-step>Siguiente paso</button>
+                    </div>
+                </section>
+
+                <section class="registration-step" data-step-panel="3" aria-labelledby="applicant-interests-title" hidden>
+                    <fieldset>
+                        <legend class="form-section-title" id="applicant-interests-title"><i class="bi bi-briefcase" aria-hidden="true"></i> Intereses laborales</legend>
+                        <div class="interest-grid">
+                            <input class="btn-check" type="checkbox" id="applicant-interest-technology" name="applicant-interests" value="technology">
+                            <label class="interest-card" for="applicant-interest-technology"><i class="bi bi-code-square" aria-hidden="true"></i><span>Tecnología</span></label>
+                            <input class="btn-check" type="checkbox" id="applicant-interest-administration" name="applicant-interests" value="administration">
+                            <label class="interest-card" for="applicant-interest-administration"><i class="bi bi-bar-chart" aria-hidden="true"></i><span>Administración</span></label>
+                            <input class="btn-check" type="checkbox" id="applicant-interest-marketing" name="applicant-interests" value="marketing">
+                            <label class="interest-card" for="applicant-interest-marketing"><i class="bi bi-megaphone" aria-hidden="true"></i><span>Marketing</span></label>
+                            <input class="btn-check" type="checkbox" id="applicant-interest-design" name="applicant-interests" value="design">
+                            <label class="interest-card" for="applicant-interest-design"><i class="bi bi-vector-pen" aria-hidden="true"></i><span>Diseño</span></label>
+                            <input class="btn-check" type="checkbox" id="applicant-interest-finance" name="applicant-interests" value="finance">
+                            <label class="interest-card" for="applicant-interest-finance"><i class="bi bi-cash-coin" aria-hidden="true"></i><span>Finanzas</span></label>
+                            <input class="btn-check" type="checkbox" id="applicant-interest-operations" name="applicant-interests" value="operations">
+                            <label class="interest-card" for="applicant-interest-operations"><i class="bi bi-gear" aria-hidden="true"></i><span>Operaciones</span></label>
+                        </div>
+                    </fieldset>
+
+                    <div class="form-section-block">
+                        <label class="form-section-title" for="applicant-cv"><i class="bi bi-file-earmark-text" aria-hidden="true"></i> Curriculum vitae</label>
+                        <input class="form-control auth-file-control" id="applicant-cv" name="applicant-cv" type="file" accept=".pdf,.doc,.docx">
+                        <div class="form-text">Formato PDF o Word. Campo opcional en esta versión.</div>
+                    </div>
+
+                    <div class="form-check registration-check">
+                        <input class="form-check-input" id="applicant-communications" name="applicant-communications" type="checkbox">
+                        <label class="form-check-label" for="applicant-communications">Acepto recibir comunicaciones y novedades de PrimerPaso.</label>
+                    </div>
+
+                    <div class="registration-actions">
+                        <button class="btn btn-soft btn-lg" type="button" data-previous-step>Volver</button>
+                        <button class="btn btn-primary-custom btn-lg" type="submit">Crear cuenta</button>
+                    </div>
+                    <p class="auth-form-status" role="status" aria-live="polite"></p>
+                </section>
+            </form>
+        </section>
+    </main>
+
+    <footer class="auth-footer">
+        <div class="container auth-footer-inner">
+            <p>© <span data-current-year></span> PrimerPaso</p>
+            <a href="iniciar-sesion.html">Ya tengo una cuenta</a>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src="../js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Registro preliminar de empresas en PrimerPaso.">
+    <title>Registro de empresa | PrimerPaso</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/auth.css">
+</head>
+<body class="auth-page">
+    <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
+
+    <header class="auth-header">
+        <div class="container auth-header-inner">
+            <a class="brand-link" href="../index.html" aria-label="PrimerPaso, ir al inicio">
+                <span class="brand-icon" aria-hidden="true"><i class="bi bi-person-workspace"></i></span>
+                <span class="brand-copy"><strong>PrimerPaso</strong><small>Inicia tu camino</small></span>
+            </a>
+            <a class="auth-back-link" href="registro.html"><i class="bi bi-arrow-left" aria-hidden="true"></i> Cambiar tipo de cuenta</a>
+        </div>
+    </header>
+
+    <main class="auth-main" id="main-content">
+        <section class="auth-shell registration-shell" aria-labelledby="company-register-title">
+            <div class="registration-heading">
+                <span class="auth-heading-icon" aria-hidden="true"><i class="bi bi-buildings"></i></span>
+                <h1 id="company-register-title">Registro de empresa</h1>
+            </div>
+
+            <ol class="registration-progress" aria-label="Progreso del registro">
+                <li class="is-active" data-step-indicator="1" aria-current="step"><span>1</span><strong>Datos de la empresa</strong></li>
+                <li data-step-indicator="2"><span>2</span><strong>Perfil del reclutador</strong></li>
+                <li data-step-indicator="3"><span>3</span><strong>Preferencias</strong></li>
+            </ol>
+
+            <form class="registration-form" id="company-register-form" data-multi-step novalidate>
+                <section class="registration-step" data-step-panel="1" aria-labelledby="company-data-title">
+                    <div class="registration-introduction">
+                        <h2>Crea tu cuenta de empresa</h2>
+                        <p>Registra tu empresa para publicar vacantes y encontrar nuevos talentos.</p>
+                    </div>
+
+                    <h2 class="form-section-title" id="company-data-title"><i class="bi bi-building-check" aria-hidden="true"></i> Información de la empresa</h2>
+
+                    <div class="row g-4">
+                        <div class="col-12">
+                            <label class="form-label" for="company-name">Nombre comercial</label>
+                            <input class="form-control auth-control" id="company-name" name="company-name" type="text" autocomplete="organization" required>
+                            <div class="invalid-feedback">Ingresa el nombre de la empresa.</div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="company-tax-id">RUC o identificación fiscal</label>
+                            <input class="form-control auth-control" id="company-tax-id" name="company-tax-id" type="text" inputmode="numeric" required>
+                            <div class="invalid-feedback">Ingresa la identificación fiscal.</div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="company-sector">Sector empresarial</label>
+                            <select class="form-select auth-control" id="company-sector" name="company-sector" required>
+                                <option value="" selected disabled>Selecciona un sector</option>
+                                <option value="technology">Tecnología</option>
+                                <option value="services">Servicios</option>
+                                <option value="commerce">Comercio</option>
+                                <option value="industry">Industria</option>
+                                <option value="other">Otro</option>
+                            </select>
+                            <div class="invalid-feedback">Selecciona el sector de la empresa.</div>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label" for="company-website">Sitio web</label>
+                            <input class="form-control auth-control" id="company-website" name="company-website" type="url" autocomplete="url" placeholder="https://">
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label" for="company-location">Ubicación, ciudad y país</label>
+                            <input class="form-control auth-control" id="company-location" name="company-location" type="text" autocomplete="address-level2" required>
+                            <div class="invalid-feedback">Ingresa la ubicación de la empresa.</div>
+                        </div>
+                    </div>
+
+                    <div class="registration-actions registration-actions-end">
+                        <button class="btn btn-primary-custom btn-lg" type="button" data-next-step>Siguiente paso</button>
+                    </div>
+                </section>
+
+                <section class="registration-step" data-step-panel="2" aria-labelledby="recruiter-data-title" hidden>
+                    <div class="registration-introduction">
+                        <h2>Cuéntanos sobre el reclutador</h2>
+                        <p>Esta persona será la encargada de gestionar las vacantes y candidatos.</p>
+                    </div>
+
+                    <h2 class="form-section-title" id="recruiter-data-title"><i class="bi bi-person" aria-hidden="true"></i> Datos del reclutador</h2>
+
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <label class="form-label" for="recruiter-first-name">Nombres</label>
+                            <input class="form-control auth-control" id="recruiter-first-name" name="recruiter-first-name" type="text" autocomplete="given-name" required>
+                            <div class="invalid-feedback">Ingresa los nombres.</div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="recruiter-last-name">Apellidos</label>
+                            <input class="form-control auth-control" id="recruiter-last-name" name="recruiter-last-name" type="text" autocomplete="family-name" required>
+                            <div class="invalid-feedback">Ingresa los apellidos.</div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="recruiter-email">Correo corporativo</label>
+                            <input class="form-control auth-control" id="recruiter-email" name="recruiter-email" type="email" autocomplete="email" required>
+                            <div class="invalid-feedback">Ingresa un correo válido.</div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="recruiter-phone">Teléfono</label>
+                            <input class="form-control auth-control" id="recruiter-phone" name="recruiter-phone" type="tel" autocomplete="tel" required>
+                            <div class="invalid-feedback">Ingresa un teléfono.</div>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label" for="recruiter-password">Contraseña</label>
+                            <input class="form-control auth-control" id="recruiter-password" name="recruiter-password" type="password" autocomplete="new-password" minlength="8" required>
+                            <div class="invalid-feedback">Usa al menos 8 caracteres.</div>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label" for="recruiter-password-confirmation">Confirmar contraseña</label>
+                            <input class="form-control auth-control" id="recruiter-password-confirmation" name="recruiter-password-confirmation" type="password" autocomplete="new-password" minlength="8" data-confirm-password="#recruiter-password" required>
+                            <div class="invalid-feedback">Las contraseñas deben coincidir.</div>
+                        </div>
+                    </div>
+
+                    <div class="registration-actions">
+                        <button class="btn btn-soft btn-lg" type="button" data-previous-step>Volver</button>
+                        <button class="btn btn-primary-custom btn-lg" type="button" data-next-step>Siguiente paso</button>
+                    </div>
+                </section>
+
+                <section class="registration-step" data-step-panel="3" aria-labelledby="company-interests-title" hidden>
+                    <fieldset>
+                        <legend class="form-section-title" id="company-interests-title"><i class="bi bi-briefcase" aria-hidden="true"></i> Áreas de interés</legend>
+                        <div class="interest-grid interest-grid-large">
+                            <input class="btn-check" type="checkbox" id="company-interest-technology" name="company-interests" value="technology">
+                            <label class="interest-card" for="company-interest-technology"><i class="bi bi-code-square" aria-hidden="true"></i><span>Tecnología</span></label>
+                            <input class="btn-check" type="checkbox" id="company-interest-administration" name="company-interests" value="administration">
+                            <label class="interest-card" for="company-interest-administration"><i class="bi bi-bar-chart" aria-hidden="true"></i><span>Administración</span></label>
+                            <input class="btn-check" type="checkbox" id="company-interest-marketing" name="company-interests" value="marketing">
+                            <label class="interest-card" for="company-interest-marketing"><i class="bi bi-megaphone" aria-hidden="true"></i><span>Marketing</span></label>
+                            <input class="btn-check" type="checkbox" id="company-interest-design" name="company-interests" value="design">
+                            <label class="interest-card" for="company-interest-design"><i class="bi bi-vector-pen" aria-hidden="true"></i><span>Diseño</span></label>
+                            <input class="btn-check" type="checkbox" id="company-interest-finance" name="company-interests" value="finance">
+                            <label class="interest-card" for="company-interest-finance"><i class="bi bi-cash-coin" aria-hidden="true"></i><span>Finanzas</span></label>
+                            <input class="btn-check" type="checkbox" id="company-interest-operations" name="company-interests" value="operations">
+                            <label class="interest-card" for="company-interest-operations"><i class="bi bi-gear" aria-hidden="true"></i><span>Operaciones</span></label>
+                            <input class="btn-check" type="checkbox" id="company-interest-sales" name="company-interests" value="sales">
+                            <label class="interest-card" for="company-interest-sales"><i class="bi bi-graph-up-arrow" aria-hidden="true"></i><span>Ventas</span></label>
+                            <input class="btn-check" type="checkbox" id="company-interest-logistics" name="company-interests" value="logistics">
+                            <label class="interest-card" for="company-interest-logistics"><i class="bi bi-truck" aria-hidden="true"></i><span>Logística</span></label>
+                            <input class="btn-check" type="checkbox" id="company-interest-human-resources" name="company-interests" value="human-resources">
+                            <label class="interest-card" for="company-interest-human-resources"><i class="bi bi-people" aria-hidden="true"></i><span>Recursos humanos</span></label>
+                        </div>
+                    </fieldset>
+
+                    <div class="form-section-block">
+                        <label class="form-section-title" for="company-first-opening"><i class="bi bi-file-earmark-text" aria-hidden="true"></i> Publica tu primera vacante <small>(opcional)</small></label>
+                        <p class="form-section-help">También puedes publicarla más tarde desde el panel de la empresa.</p>
+                        <textarea class="form-control auth-textarea" id="company-first-opening" name="company-first-opening" rows="4" placeholder="Escribe el nombre y una breve descripción de la vacante"></textarea>
+                    </div>
+
+                    <div class="form-check registration-check">
+                        <input class="form-check-input" id="company-terms" name="company-terms" type="checkbox" required>
+                        <label class="form-check-label" for="company-terms">Acepto los <a href="#">Términos y condiciones</a> y las <a href="#">Políticas de privacidad</a>.</label>
+                        <div class="invalid-feedback">Debes aceptar los términos para continuar.</div>
+                    </div>
+
+                    <div class="registration-actions">
+                        <button class="btn btn-soft btn-lg" type="button" data-previous-step>Volver</button>
+                        <button class="btn btn-primary-custom btn-lg" type="submit">Crear cuenta</button>
+                    </div>
+                    <p class="auth-form-status" role="status" aria-live="polite"></p>
+                </section>
+            </form>
+        </section>
+    </main>
+
+    <footer class="auth-footer">
+        <div class="container auth-footer-inner">
+            <p>© <span data-current-year></span> PrimerPaso</p>
+            <a href="iniciar-sesion.html">Ya tengo una cuenta</a>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src="../js/auth.js"></script>
+</body>
+</html>
