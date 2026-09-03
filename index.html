@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+        content="PrimerPaso conecta a estudiantes y jóvenes profesionales con prácticas, empleos y empresas que impulsan su desarrollo.">
+    <title>PrimerPaso | Tu futuro profesional comienza aquí</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
+
+    <header class="site-header sticky-top">
+        <nav class="navbar navbar-expand-xl" aria-label="Navegación principal">
+            <div class="container">
+                <a class="navbar-brand brand-link" href="#inicio" aria-label="PrimerPaso, ir al inicio">
+                    <span class="brand-icon" aria-hidden="true"><i class="bi bi-person-workspace"></i></span>
+                    <span>PrimerPaso</span>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-navbar"
+                    aria-controls="main-navbar" aria-expanded="false" aria-label="Abrir menú de navegación">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="main-navbar">
+                    <ul class="navbar-nav mx-auto mb-3 mb-xl-0">
+                        <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#explorar-empleos">Explorar empleos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#para-empresas">Para empresas</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#recursos">Recursos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#sobre-nosotros">Sobre nosotros</a></li>
+                    </ul>
+
+                    <div class="navbar-actions d-flex flex-column flex-sm-row gap-2">
+                        <a class="btn btn-soft" href="html/iniciar-sesion.html">Iniciar sesión</a>
+                        <a class="btn btn-primary-custom" href="html/registro.html">Registrarse</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <section class="hero-section" id="inicio">
+            <div class="container">
+                <div class="hero-panel">
+                    <div class="row align-items-center g-5">
+                        <div class="col-lg-5">
+                            <span class="eyebrow"><i class="bi bi-stars" aria-hidden="true"></i> Oportunidades para
+                                empezar</span>
+                            <h1>Da tu primer paso hacia tu futuro profesional</h1>
+                            <p class="hero-description">Encuentra prácticas, empleos y oportunidades creadas para
+                                impulsar tu talento.</p>
+
+                            <div class="hero-actions d-flex flex-column flex-sm-row gap-3">
+                                <a class="btn btn-primary-custom btn-lg" href="#explorar-empleos">Buscar empleo</a>
+                                <a class="btn btn-soft btn-lg" href="#para-empresas">Soy una empresa</a>
+                            </div>
+
+                            <form class="hero-search-form needs-validation" id="job-search-form" novalidate>
+                                <div class="search-field">
+                                    <i class="bi bi-search" aria-hidden="true"></i>
+                                    <label class="visually-hidden" for="job-search-input">Puesto, carrera o palabra
+                                        clave</label>
+                                    <input class="form-control" id="job-search-input" name="job-search-input"
+                                        type="search" placeholder="Puesto, carrera o palabra clave" autocomplete="off"
+                                        required>
+                                    <div class="invalid-feedback">Ingresa un puesto o una palabra clave.</div>
+                                </div>
+                                <button class="btn btn-dark-custom" type="submit">Buscar</button>
+                            </form>
+                        </div>
+
+                        <div class="col-lg-7">
+                            <div class="hero-visual">
+                                <div class="carousel slide carousel-fade" id="hero-carousel" data-bs-ride="carousel"
+                                    data-bs-interval="5000">
+                                    <div class="carousel-indicators">
+                                        <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="0"
+                                            class="active" aria-current="true" aria-label="Imagen 1"></button>
+                                        <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="1"
+                                            aria-label="Imagen 2"></button>
+                                        <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="2"
+                                            aria-label="Imagen 3"></button>
+                                    </div>
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&amp;fit=crop&amp;w=1200&amp;q=85"
+                                                class="d-block w-100"
+                                                alt="Jóvenes profesionales colaborando frente a una laptop">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&amp;fit=crop&amp;w=1200&amp;q=85"
+                                                class="d-block w-100" alt="Equipo reunido para desarrollar un proyecto">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&amp;fit=crop&amp;w=1200&amp;q=85"
+                                                class="d-block w-100"
+                                                alt="Profesionales trabajando juntos en una oficina">
+                                        </div>
+                                    </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#hero-carousel"
+                                        data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Imagen anterior</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#hero-carousel"
+                                        data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Imagen siguiente</span>
+                                    </button>
+                                </div>
+
+                                <div class="hero-stats" aria-label="Estadísticas de PrimerPaso">
+                                    <article class="hero-stat-card stat-vacancies">
+                                        <span class="stat-icon" aria-hidden="true"><i
+                                                class="bi bi-bag-check"></i></span>
+                                        <strong>2,450+</strong>
+                                        <span>Vacantes activas</span>
+                                    </article>
+                                    <article class="hero-stat-card stat-companies">
+                                        <span class="stat-icon" aria-hidden="true"><i
+                                                class="bi bi-buildings"></i></span>
+                                        <strong>1,200+</strong>
+                                        <span>Empresas confiables</span>
+                                    </article>
+                                    <article class="hero-stat-card stat-opportunities">
+                                        <span class="stat-icon" aria-hidden="true"><i
+                                                class="bi bi-briefcase"></i></span>
+                                        <strong>8,950+</strong>
+                                        <span>Oportunidades publicadas</span>
+                                    </article>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-space" id="explorar-empleos">
+            <div class="container">
+                <div class="section-heading row align-items-end g-3">
+                    <div class="col-lg-7">
+                        <span class="eyebrow">Explora por área</span>
+                        <h2>Encuentra una oportunidad para tu perfil</h2>
+                        <p>Descubre opciones pensadas para estudiantes, egresados y jóvenes profesionales.</p>
+                    </div>
+                    <div class="col-lg-5 text-lg-end">
+                        <a class="text-link" href="#oportunidades-destacadas">Ver oportunidades destacadas <i
+                                class="bi bi-arrow-right" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-sm-6 col-lg-3">
+                        <a class="category-card" href="#oportunidades-destacadas" data-search-term="tecnología">
+                            <span class="category-icon"><i class="bi bi-code-slash" aria-hidden="true"></i></span>
+                            <span class="category-copy"><strong>Tecnología</strong><small>480
+                                    oportunidades</small></span>
+                            <i class="bi bi-arrow-up-right category-arrow" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <div class="col-sm-6 col-lg-3">
+                        <a class="category-card" href="#oportunidades-destacadas" data-search-term="administración">
+                            <span class="category-icon"><i class="bi bi-bar-chart" aria-hidden="true"></i></span>
+                            <span class="category-copy"><strong>Administración</strong><small>325
+                                    oportunidades</small></span>
+                            <i class="bi bi-arrow-up-right category-arrow" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <div class="col-sm-6 col-lg-3">
+                        <a class="category-card" href="#oportunidades-destacadas" data-search-term="marketing">
+                            <span class="category-icon"><i class="bi bi-megaphone" aria-hidden="true"></i></span>
+                            <span class="category-copy"><strong>Marketing</strong><small>216
+                                    oportunidades</small></span>
+                            <i class="bi bi-arrow-up-right category-arrow" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <div class="col-sm-6 col-lg-3">
+                        <a class="category-card" href="#oportunidades-destacadas" data-search-term="diseño">
+                            <span class="category-icon"><i class="bi bi-vector-pen" aria-hidden="true"></i></span>
+                            <span class="category-copy"><strong>Diseño</strong><small>174 oportunidades</small></span>
+                            <i class="bi bi-arrow-up-right category-arrow" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-space featured-section" id="oportunidades-destacadas">
+            <div class="container">
+                <div class="section-heading text-center mx-auto">
+                    <span class="eyebrow">Vacantes recientes</span>
+                    <h2>Oportunidades destacadas</h2>
+                    <p>Conoce algunas posiciones disponibles y empieza a construir tu experiencia.</p>
+                </div>
+
+                <p class="search-results-count" id="search-results-count" role="status" aria-live="polite"></p>
+
+                <div class="row g-4" id="job-results-grid">
+                    <div class="col-md-6 col-xl-3" data-job-card
+                        data-keywords="tecnología frontend desarrollo sistemas remoto">
+                        <article class="job-card h-100">
+                            <div class="job-card-top">
+                                <span class="company-logo company-logo-blue">NV</span>
+                                <button class="save-job-button" type="button"
+                                    aria-label="Guardar vacante de practicante de desarrollo frontend"><i
+                                        class="bi bi-bookmark" aria-hidden="true"></i></button>
+                            </div>
+                            <span class="job-type">Prácticas</span>
+                            <h3>Practicante de Desarrollo Frontend</h3>
+                            <p class="company-name">Nova Digital</p>
+                            <ul class="job-meta list-unstyled">
+                                <li><i class="bi bi-geo-alt" aria-hidden="true"></i> Lima, modalidad híbrida</li>
+                                <li><i class="bi bi-clock" aria-hidden="true"></i> Medio tiempo</li>
+                            </ul>
+                            <button class="btn btn-outline-primary-custom w-100" type="button">Ver oportunidad</button>
+                        </article>
+                    </div>
+
+                    <div class="col-md-6 col-xl-3" data-job-card
+                        data-keywords="marketing comunicación contenido redes sociales remoto">
+                        <article class="job-card h-100">
+                            <div class="job-card-top">
+                                <span class="company-logo company-logo-violet">AL</span>
+                                <button class="save-job-button" type="button"
+                                    aria-label="Guardar vacante de asistente de marketing"><i class="bi bi-bookmark"
+                                        aria-hidden="true"></i></button>
+                            </div>
+                            <span class="job-type">Primer empleo</span>
+                            <h3>Asistente Junior de Marketing</h3>
+                            <p class="company-name">Andes Lab</p>
+                            <ul class="job-meta list-unstyled">
+                                <li><i class="bi bi-geo-alt" aria-hidden="true"></i> Remoto, Perú</li>
+                                <li><i class="bi bi-clock" aria-hidden="true"></i> Tiempo completo</li>
+                            </ul>
+                            <button class="btn btn-outline-primary-custom w-100" type="button">Ver oportunidad</button>
+                        </article>
+                    </div>
+
+                    <div class="col-md-6 col-xl-3" data-job-card
+                        data-keywords="administración datos análisis excel finanzas presencial">
+                        <article class="job-card h-100">
+                            <div class="job-card-top">
+                                <span class="company-logo company-logo-teal">FP</span>
+                                <button class="save-job-button" type="button"
+                                    aria-label="Guardar vacante de analista de datos junior"><i class="bi bi-bookmark"
+                                        aria-hidden="true"></i></button>
+                            </div>
+                            <span class="job-type">Trainee</span>
+                            <h3>Analista de Datos Junior</h3>
+                            <p class="company-name">Faro Perú</p>
+                            <ul class="job-meta list-unstyled">
+                                <li><i class="bi bi-geo-alt" aria-hidden="true"></i> San Isidro, Lima</li>
+                                <li><i class="bi bi-clock" aria-hidden="true"></i> Tiempo completo</li>
+                            </ul>
+                            <button class="btn btn-outline-primary-custom w-100" type="button">Ver oportunidad</button>
+                        </article>
+                    </div>
+
+                    <div class="col-md-6 col-xl-3" data-job-card
+                        data-keywords="diseño experiencia usuario ux ui producto híbrido">
+                        <article class="job-card h-100">
+                            <div class="job-card-top">
+                                <span class="company-logo company-logo-coral">CP</span>
+                                <button class="save-job-button" type="button"
+                                    aria-label="Guardar vacante de practicante de diseño de producto"><i
+                                        class="bi bi-bookmark" aria-hidden="true"></i></button>
+                            </div>
+                            <span class="job-type">Prácticas</span>
+                            <h3>Practicante de Diseño de Producto</h3>
+                            <p class="company-name">Crea Perú</p>
+                            <ul class="job-meta list-unstyled">
+                                <li><i class="bi bi-geo-alt" aria-hidden="true"></i> Miraflores, modalidad híbrida</li>
+                                <li><i class="bi bi-clock" aria-hidden="true"></i> Medio tiempo</li>
+                            </ul>
+                            <button class="btn btn-outline-primary-custom w-100" type="button">Ver oportunidad</button>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="empty-state d-none" id="job-empty-state" role="status">
+                    <i class="bi bi-search" aria-hidden="true"></i>
+                    <h3>No encontramos coincidencias</h3>
+                    <p>Prueba con términos como “tecnología”, “marketing” o “datos”.</p>
+                    <button class="btn btn-soft" id="clear-search-button" type="button">Ver todas las
+                        oportunidades</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-space" id="recursos">
+            <div class="container">
+                <div class="section-heading text-center mx-auto">
+                    <span class="eyebrow">Tu ruta profesional</span>
+                    <h2>Empieza en tres pasos</h2>
+                    <p>Crea un perfil claro, explora vacantes compatibles y postula con confianza.</p>
+                </div>
+
+                <div class="row g-4 process-grid">
+                    <div class="col-md-4">
+                        <article class="process-card">
+                            <span class="process-number">01</span>
+                            <span class="process-icon"><i class="bi bi-person-vcard" aria-hidden="true"></i></span>
+                            <h3>Crea tu perfil</h3>
+                            <p>Presenta tu formación, habilidades e intereses de manera sencilla.</p>
+                        </article>
+                    </div>
+                    <div class="col-md-4">
+                        <article class="process-card">
+                            <span class="process-number">02</span>
+                            <span class="process-icon"><i class="bi bi-funnel" aria-hidden="true"></i></span>
+                            <h3>Explora opciones</h3>
+                            <p>Encuentra oportunidades acordes con tu etapa y área profesional.</p>
+                        </article>
+                    </div>
+                    <div class="col-md-4">
+                        <article class="process-card">
+                            <span class="process-number">03</span>
+                            <span class="process-icon"><i class="bi bi-send-check" aria-hidden="true"></i></span>
+                            <h3>Postula</h3>
+                            <p>Revisa los requisitos, prepara tu perfil y envía tu postulación.</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-space company-section" id="para-empresas">
+            <div class="container">
+                <div class="company-panel">
+                    <div class="row align-items-center g-4">
+                        <div class="col-lg-8">
+                            <span class="eyebrow eyebrow-light">Talento con potencial</span>
+                            <h2>Conecta tu empresa con nuevos profesionales</h2>
+                            <p>Publica oportunidades y acerca tu organización a estudiantes y jóvenes que buscan crecer.
+                            </p>
+                        </div>
+                        <div class="col-lg-4 text-lg-end">
+                            <button class="btn btn-light btn-lg" type="button">Publicar una oportunidad</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-space about-section" id="sobre-nosotros">
+            <div class="container">
+                <div class="row align-items-center g-5">
+                    <div class="col-lg-6">
+                        <span class="eyebrow">Sobre PrimerPaso</span>
+                        <h2>Una plataforma para convertir el potencial en experiencia</h2>
+                    </div>
+                    <div class="col-lg-6">
+                        <p class="about-copy">PrimerPaso reúne oportunidades de inicio profesional en un entorno
+                            sencillo y cercano. Buscamos que cada persona pueda descubrir opciones relevantes y que cada
+                            empresa encuentre talento dispuesto a aprender.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-5">
+                    <a class="brand-link footer-brand" href="#inicio">
+                        <span class="brand-icon" aria-hidden="true"><i class="bi bi-person-workspace"></i></span>
+                        <span>PrimerPaso</span>
+                    </a>
+                    <p class="footer-description">Oportunidades para comenzar, aprender y crecer profesionalmente.</p>
+                    <div class="social-links" aria-label="Redes sociales">
+                        <a href="#" aria-label="PrimerPaso en LinkedIn"><i class="bi bi-linkedin"
+                                aria-hidden="true"></i></a>
+                        <a href="#" aria-label="PrimerPaso en Instagram"><i class="bi bi-instagram"
+                                aria-hidden="true"></i></a>
+                        <a href="#" aria-label="PrimerPaso en Facebook"><i class="bi bi-facebook"
+                                aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-2">
+                    <h2 class="footer-title">Plataforma</h2>
+                    <ul class="footer-links list-unstyled">
+                        <li><a href="#explorar-empleos">Explorar empleos</a></li>
+                        <li><a href="#recursos">Recursos</a></li>
+                        <li><a href="#para-empresas">Para empresas</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-lg-2">
+                    <h2 class="footer-title">PrimerPaso</h2>
+                    <ul class="footer-links list-unstyled">
+                        <li><a href="#sobre-nosotros">Sobre nosotros</a></li>
+                        <li><a href="mailto:hola@primerpaso.pe">Contacto</a></li>
+                        <li><a href="#">Preguntas frecuentes</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h2 class="footer-title">Mantente informado</h2>
+                    <p class="footer-newsletter-copy">Recibe novedades y recursos para tu desarrollo profesional.</p>
+                    <form class="footer-form" id="newsletter-form" novalidate>
+                        <label class="visually-hidden" for="newsletter-email">Correo electrónico</label>
+                        <div class="input-group">
+                            <input class="form-control" id="newsletter-email" type="email" placeholder="tu@correo.com"
+                                required>
+                            <button class="btn btn-primary-custom" type="submit" aria-label="Suscribirse"><i
+                                    class="bi bi-arrow-right" aria-hidden="true"></i></button>
+                        </div>
+                        <p class="form-status" id="newsletter-status" role="status" aria-live="polite"></p>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom d-flex flex-column flex-md-row justify-content-between gap-2">
+                <p>© <span id="current-year"></span> PrimerPaso. Todos los derechos reservados.</p>
+                <div class="legal-links">
+                    <a href="#">Privacidad</a>
+                    <a href="#">Términos</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
