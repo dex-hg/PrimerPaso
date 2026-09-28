@@ -29,47 +29,48 @@
             <div class="auth-page-heading">
                 <span class="auth-heading-icon" aria-hidden="true"><i class="bi bi-box-arrow-in-right"></i></span>
                 <h1 id="login-title">¡Bienvenido de nuevo!</h1>
-                <p>Ingresa a tu cuenta para continuar con tus postulaciones.</p>
+                <p>Ingresa con el correo y la contraseña de tu cuenta.</p>
             </div>
 
-            <form class="auth-form needs-validation" id="login-form" data-demo-form novalidate>
+            <form class="auth-form needs-validation" id="login-form" novalidate>
                 <fieldset class="role-toggle">
                     <legend class="visually-hidden">Tipo de cuenta</legend>
-                    <input class="btn-check" type="radio" name="login-role" id="login-role-applicant" value="applicant" checked>
+                    <input class="btn-check" type="radio" name="login-role" id="login-role-applicant" value="postulante" checked>
                     <label class="btn role-tab" for="login-role-applicant">Postulante</label>
-                    <input class="btn-check" type="radio" name="login-role" id="login-role-company" value="company">
+                    <input class="btn-check" type="radio" name="login-role" id="login-role-company" value="empresa">
                     <label class="btn role-tab" for="login-role-company">Empresa</label>
                 </fieldset>
 
                 <div class="social-access">
-                    <button class="social-access-button" type="button"><i class="bi bi-google" aria-hidden="true"></i> Ingresar con Google</button>
-                    <button class="social-access-button" type="button"><i class="bi bi-linkedin" aria-hidden="true"></i> Ingresar con LinkedIn</button>
+                    <button class="social-access-button" type="button" data-acceso-pendiente="El acceso con Google aún no está disponible. Ingresa con tu correo y contraseña."><i class="bi bi-google" aria-hidden="true"></i> Ingresar con Google</button>
+                    <button class="social-access-button" type="button" data-acceso-pendiente="El acceso con LinkedIn aún no está disponible. Ingresa con tu correo y contraseña."><i class="bi bi-linkedin" aria-hidden="true"></i> Ingresar con LinkedIn</button>
                 </div>
 
                 <div class="form-divider"><span>o con un correo registrado</span></div>
 
                 <div class="mb-3">
                     <label class="form-label" for="login-email">Correo electrónico</label>
-                    <input class="form-control auth-control" id="login-email" name="login-email" type="email" autocomplete="email" required>
+                    <input class="form-control auth-control" id="login-email" name="login-email" type="email" autocomplete="username" maxlength="254" required>
                     <div class="invalid-feedback">Ingresa un correo electrónico válido.</div>
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label" for="login-password">Contraseña</label>
-                    <input class="form-control auth-control" id="login-password" name="login-password" type="password" autocomplete="current-password" minlength="6" required>
-                    <div class="invalid-feedback">Ingresa tu contraseña.</div>
+                    <input class="form-control auth-control" id="login-password" name="login-password" type="password" autocomplete="current-password" minlength="8" maxlength="128" required>
+                    <div class="invalid-feedback">Ingresa una contraseña de entre 8 y 128 caracteres.</div>
                 </div>
 
                 <div class="auth-options">
                     <div class="form-check">
-                        <input class="form-check-input" id="remember-login" name="remember-login" type="checkbox">
+                        <input class="form-check-input" id="remember-login" name="remember-login" type="checkbox" disabled aria-describedby="remember-login-help">
                         <label class="form-check-label" for="remember-login">Recordar mi inicio de sesión</label>
                     </div>
-                    <a href="#">¿Olvidaste tu contraseña?</a>
+                    <a href="#login-form" data-acceso-pendiente="La recuperación de contraseña aún no está disponible.">¿Olvidaste tu contraseña?</a>
                 </div>
+                <p class="small text-secondary mb-0" id="remember-login-help">El acceso persistente aún no está disponible.</p>
 
                 <button class="btn btn-primary-custom btn-lg w-100" type="submit">Iniciar sesión</button>
-                <p class="auth-form-status" role="status" aria-live="polite"></p>
+                <p class="auth-form-status" role="status" aria-live="polite" aria-atomic="true"></p>
 
                 <p class="auth-alternative">¿Aún no tienes una cuenta? <a href="registro.html">Regístrate aquí</a></p>
             </form>
@@ -85,5 +86,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <script src="../js/auth.js"></script>
+    <script src="../js/sesion.js"></script>
 </body>
 </html>
