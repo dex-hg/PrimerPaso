@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Registro preliminar de postulantes en PrimerPaso.">
+    <meta name="description" content="Crea tu cuenta de postulante en PrimerPaso.">
     <title>Registro de postulante | PrimerPaso</title>
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
@@ -34,14 +34,14 @@
             <ol class="registration-progress" aria-label="Progreso del registro">
                 <li class="is-active" data-step-indicator="1" aria-current="step"><span>1</span><strong>Datos personales</strong></li>
                 <li data-step-indicator="2"><span>2</span><strong>Perfil académico</strong></li>
-                <li data-step-indicator="3"><span>3</span><strong>CV e intereses</strong></li>
+                <li data-step-indicator="3"><span>3</span><strong>Intereses laborales</strong></li>
             </ol>
 
-            <form class="registration-form" id="applicant-register-form" data-multi-step novalidate>
+            <form class="registration-form" id="applicant-register-form" data-multi-step data-tipo-registro="postulante" novalidate>
                 <section class="registration-step" data-step-panel="1" aria-labelledby="applicant-personal-title">
                     <div class="social-access social-access-compact">
-                        <button class="social-access-button" type="button"><i class="bi bi-google" aria-hidden="true"></i> Registrarse con Google</button>
-                        <button class="social-access-button" type="button"><i class="bi bi-linkedin" aria-hidden="true"></i> Registrarse con LinkedIn</button>
+                        <button class="social-access-button" type="button" disabled title="Disponible en una siguiente etapa"><i class="bi bi-google" aria-hidden="true"></i> Registrarse con Google</button>
+                        <button class="social-access-button" type="button" disabled title="Disponible en una siguiente etapa"><i class="bi bi-linkedin" aria-hidden="true"></i> Registrarse con LinkedIn</button>
                     </div>
 
                     <div class="form-divider"><span>o crea tu cuenta con otro correo</span></div>
@@ -51,27 +51,27 @@
                     <div class="row g-4">
                         <div class="col-md-6">
                             <label class="form-label" for="applicant-first-name">Nombres</label>
-                            <input class="form-control auth-control" id="applicant-first-name" name="applicant-first-name" type="text" autocomplete="given-name" required>
+                            <input class="form-control auth-control" id="applicant-first-name" name="applicant-first-name" type="text" autocomplete="given-name" maxlength="120" required>
                             <div class="invalid-feedback">Ingresa tus nombres.</div>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label" for="applicant-last-name">Apellidos</label>
-                            <input class="form-control auth-control" id="applicant-last-name" name="applicant-last-name" type="text" autocomplete="family-name" required>
+                            <input class="form-control auth-control" id="applicant-last-name" name="applicant-last-name" type="text" autocomplete="family-name" maxlength="120" required>
                             <div class="invalid-feedback">Ingresa tus apellidos.</div>
                         </div>
                         <div class="col-12">
                             <label class="form-label" for="applicant-email">Correo electrónico</label>
-                            <input class="form-control auth-control" id="applicant-email" name="applicant-email" type="email" autocomplete="email" required>
+                            <input class="form-control auth-control" id="applicant-email" name="applicant-email" type="email" autocomplete="email" maxlength="254" required>
                             <div class="invalid-feedback">Ingresa un correo electrónico válido.</div>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label" for="applicant-password">Contraseña</label>
-                            <input class="form-control auth-control" id="applicant-password" name="applicant-password" type="password" autocomplete="new-password" minlength="8" required>
-                            <div class="invalid-feedback">Usa al menos 8 caracteres.</div>
+                            <input class="form-control auth-control" id="applicant-password" name="applicant-password" type="password" autocomplete="new-password" minlength="8" maxlength="128" required>
+                            <div class="invalid-feedback">Usa entre 8 y 128 caracteres.</div>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label" for="applicant-password-confirmation">Confirmar contraseña</label>
-                            <input class="form-control auth-control" id="applicant-password-confirmation" name="applicant-password-confirmation" type="password" autocomplete="new-password" minlength="8" data-confirm-password="#applicant-password" required>
+                            <input class="form-control auth-control" id="applicant-password-confirmation" name="applicant-password-confirmation" type="password" autocomplete="new-password" minlength="8" maxlength="128" data-confirm-password="#applicant-password" required>
                             <div class="invalid-feedback">Las contraseñas deben coincidir.</div>
                         </div>
                     </div>
@@ -93,28 +93,28 @@
                     <div class="row g-4">
                         <div class="col-md-6">
                             <label class="form-label" for="applicant-institution">Universidad o instituto</label>
-                            <input class="form-control auth-control" id="applicant-institution" name="applicant-institution" type="text" required>
+                            <input class="form-control auth-control" id="applicant-institution" name="applicant-institution" type="text" maxlength="180" required>
                             <div class="invalid-feedback">Ingresa tu institución.</div>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label" for="applicant-career">Carrera profesional</label>
-                            <input class="form-control auth-control" id="applicant-career" name="applicant-career" type="text" required>
+                            <input class="form-control auth-control" id="applicant-career" name="applicant-career" type="text" maxlength="160" required>
                             <div class="invalid-feedback">Ingresa tu carrera.</div>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label" for="applicant-academic-status">Condición académica</label>
                             <select class="form-select auth-control" id="applicant-academic-status" name="applicant-academic-status" required>
                                 <option value="" selected disabled>Selecciona una opción</option>
-                                <option value="student">Estudiante</option>
-                                <option value="graduate">Egresado</option>
-                                <option value="graduate-degree">Titulado</option>
+                                <option value="estudiante">Estudiante</option>
+                                <option value="egresado">Egresado</option>
+                                <option value="titulado">Titulado</option>
                             </select>
                             <div class="invalid-feedback">Selecciona tu condición académica.</div>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label" for="applicant-cycle">Ciclo actual o año de egreso</label>
-                            <input class="form-control auth-control" id="applicant-cycle" name="applicant-cycle" type="text" required>
-                            <div class="invalid-feedback">Completa este campo.</div>
+                            <input class="form-control auth-control" id="applicant-cycle" name="applicant-cycle" type="number" step="1" required>
+                            <div class="invalid-feedback">Ingresa un ciclo de 1 a 30 o un año de egreso válido, según tu condición.</div>
                         </div>
                     </div>
 
@@ -164,8 +164,8 @@
 
                     <div class="form-section-block">
                         <label class="form-section-title" for="applicant-cv"><i class="bi bi-file-earmark-text" aria-hidden="true"></i> Curriculum vitae</label>
-                        <input class="form-control auth-file-control" id="applicant-cv" name="applicant-cv" type="file" accept=".pdf,.doc,.docx">
-                        <div class="form-text">Formato PDF o Word. Campo opcional en esta versión.</div>
+                        <input class="form-control auth-file-control" id="applicant-cv" name="applicant-cv" type="file" accept=".pdf,.doc,.docx" disabled aria-describedby="applicant-cv-help">
+                        <div class="form-text" id="applicant-cv-help">La carga del CV se habilitará en una siguiente etapa, después de crear tu cuenta.</div>
                     </div>
 
                     <div class="form-check registration-check">
@@ -177,8 +177,9 @@
                         <button class="btn btn-soft btn-lg" type="button" data-previous-step>Volver</button>
                         <button class="btn btn-primary-custom btn-lg" type="submit">Crear cuenta</button>
                     </div>
-                    <p class="auth-form-status" role="status" aria-live="polite"></p>
                 </section>
+                <p class="auth-form-status" role="status" aria-live="polite" aria-atomic="true"></p>
+                <a class="auth-back-link" href="iniciar-sesion.html" data-registro-acceso hidden>Ir a la vista de inicio de sesión</a>
             </form>
         </section>
     </main>
@@ -191,6 +192,7 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src="../js/registro.js"></script>
     <script src="../js/auth.js"></script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Registro preliminar de empresas en PrimerPaso.">
+    <meta name="description" content="Crea tu cuenta de empresa en PrimerPaso.">
     <title>Registro de empresa | PrimerPaso</title>
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
@@ -37,7 +37,7 @@
                 <li data-step-indicator="3"><span>3</span><strong>Preferencias</strong></li>
             </ol>
 
-            <form class="registration-form" id="company-register-form" data-multi-step novalidate>
+            <form class="registration-form" id="company-register-form" data-multi-step data-tipo-registro="empresa" novalidate>
                 <section class="registration-step" data-step-panel="1" aria-labelledby="company-data-title">
                     <div class="registration-introduction">
                         <h2>Crea tu cuenta de empresa</h2>
@@ -49,13 +49,13 @@
                     <div class="row g-4">
                         <div class="col-12">
                             <label class="form-label" for="company-name">Nombre comercial</label>
-                            <input class="form-control auth-control" id="company-name" name="company-name" type="text" autocomplete="organization" required>
+                            <input class="form-control auth-control" id="company-name" name="company-name" type="text" autocomplete="organization" maxlength="180" required>
                             <div class="invalid-feedback">Ingresa el nombre de la empresa.</div>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label" for="company-tax-id">RUC o identificación fiscal</label>
-                            <input class="form-control auth-control" id="company-tax-id" name="company-tax-id" type="text" inputmode="numeric" required>
-                            <div class="invalid-feedback">Ingresa la identificación fiscal.</div>
+                            <input class="form-control auth-control" id="company-tax-id" name="company-tax-id" type="text" inputmode="numeric" maxlength="32" required>
+                            <div class="invalid-feedback">Para Perú, ingresa un RUC de 11 dígitos. Para otros países, usa hasta 32 letras o números.</div>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label" for="company-sector">Sector empresarial</label>
@@ -71,12 +71,18 @@
                         </div>
                         <div class="col-12">
                             <label class="form-label" for="company-website">Sitio web</label>
-                            <input class="form-control auth-control" id="company-website" name="company-website" type="url" autocomplete="url" placeholder="https://">
+                            <input class="form-control auth-control" id="company-website" name="company-website" type="url" autocomplete="url" maxlength="2000" placeholder="https://">
                         </div>
-                        <div class="col-12">
-                            <label class="form-label" for="company-location">Ubicación, ciudad y país</label>
-                            <input class="form-control auth-control" id="company-location" name="company-location" type="text" autocomplete="address-level2" required>
-                            <div class="invalid-feedback">Ingresa la ubicación de la empresa.</div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="company-country">Código de país</label>
+                            <input class="form-control auth-control" id="company-country" name="company-country" type="text" autocomplete="country" value="PE" minlength="2" maxlength="2" pattern="[A-Za-z]{2}" aria-describedby="company-country-help" required>
+                            <div class="form-text" id="company-country-help">Dos letras: PE para Perú, por ejemplo.</div>
+                            <div class="invalid-feedback">Ingresa un código de país de dos letras.</div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="company-location">Ciudad</label>
+                            <input class="form-control auth-control" id="company-location" name="company-location" type="text" autocomplete="address-level2" maxlength="120" required>
+                            <div class="invalid-feedback">Ingresa la ciudad de la empresa.</div>
                         </div>
                     </div>
 
@@ -96,32 +102,32 @@
                     <div class="row g-4">
                         <div class="col-md-6">
                             <label class="form-label" for="recruiter-first-name">Nombres</label>
-                            <input class="form-control auth-control" id="recruiter-first-name" name="recruiter-first-name" type="text" autocomplete="given-name" required>
+                            <input class="form-control auth-control" id="recruiter-first-name" name="recruiter-first-name" type="text" autocomplete="given-name" maxlength="120" required>
                             <div class="invalid-feedback">Ingresa los nombres.</div>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label" for="recruiter-last-name">Apellidos</label>
-                            <input class="form-control auth-control" id="recruiter-last-name" name="recruiter-last-name" type="text" autocomplete="family-name" required>
+                            <input class="form-control auth-control" id="recruiter-last-name" name="recruiter-last-name" type="text" autocomplete="family-name" maxlength="120" required>
                             <div class="invalid-feedback">Ingresa los apellidos.</div>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label" for="recruiter-email">Correo corporativo</label>
-                            <input class="form-control auth-control" id="recruiter-email" name="recruiter-email" type="email" autocomplete="email" required>
+                            <input class="form-control auth-control" id="recruiter-email" name="recruiter-email" type="email" autocomplete="email" maxlength="254" required>
                             <div class="invalid-feedback">Ingresa un correo válido.</div>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label" for="recruiter-phone">Teléfono</label>
-                            <input class="form-control auth-control" id="recruiter-phone" name="recruiter-phone" type="tel" autocomplete="tel" required>
+                            <input class="form-control auth-control" id="recruiter-phone" name="recruiter-phone" type="tel" autocomplete="tel" maxlength="30" required>
                             <div class="invalid-feedback">Ingresa un teléfono.</div>
                         </div>
                         <div class="col-12">
                             <label class="form-label" for="recruiter-password">Contraseña</label>
-                            <input class="form-control auth-control" id="recruiter-password" name="recruiter-password" type="password" autocomplete="new-password" minlength="8" required>
-                            <div class="invalid-feedback">Usa al menos 8 caracteres.</div>
+                            <input class="form-control auth-control" id="recruiter-password" name="recruiter-password" type="password" autocomplete="new-password" minlength="8" maxlength="128" required>
+                            <div class="invalid-feedback">Usa entre 8 y 128 caracteres.</div>
                         </div>
                         <div class="col-12">
                             <label class="form-label" for="recruiter-password-confirmation">Confirmar contraseña</label>
-                            <input class="form-control auth-control" id="recruiter-password-confirmation" name="recruiter-password-confirmation" type="password" autocomplete="new-password" minlength="8" data-confirm-password="#recruiter-password" required>
+                            <input class="form-control auth-control" id="recruiter-password-confirmation" name="recruiter-password-confirmation" type="password" autocomplete="new-password" minlength="8" maxlength="128" data-confirm-password="#recruiter-password" required>
                             <div class="invalid-feedback">Las contraseñas deben coincidir.</div>
                         </div>
                     </div>
@@ -159,8 +165,8 @@
 
                     <div class="form-section-block">
                         <label class="form-section-title" for="company-first-opening"><i class="bi bi-file-earmark-text" aria-hidden="true"></i> Publica tu primera vacante <small>(opcional)</small></label>
-                        <p class="form-section-help">También puedes publicarla más tarde desde el panel de la empresa.</p>
-                        <textarea class="form-control auth-textarea" id="company-first-opening" name="company-first-opening" rows="4" placeholder="Escribe el nombre y una breve descripción de la vacante"></textarea>
+                        <p class="form-section-help" id="company-first-opening-help">La publicación de vacantes se habilitará en una siguiente etapa, después de crear tu cuenta.</p>
+                        <textarea class="form-control auth-textarea" id="company-first-opening" name="company-first-opening" rows="4" placeholder="La publicación de vacantes estará disponible próximamente" aria-describedby="company-first-opening-help" disabled></textarea>
                     </div>
 
                     <div class="form-check registration-check">
@@ -173,8 +179,9 @@
                         <button class="btn btn-soft btn-lg" type="button" data-previous-step>Volver</button>
                         <button class="btn btn-primary-custom btn-lg" type="submit">Crear cuenta</button>
                     </div>
-                    <p class="auth-form-status" role="status" aria-live="polite"></p>
                 </section>
+                <p class="auth-form-status" role="status" aria-live="polite" aria-atomic="true"></p>
+                <a class="auth-back-link" href="iniciar-sesion.html" data-registro-acceso hidden>Ir a la vista de inicio de sesión</a>
             </form>
         </section>
     </main>
@@ -187,6 +194,7 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src="../js/registro.js"></script>
     <script src="../js/auth.js"></script>
 </body>
 </html>
