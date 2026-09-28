@@ -120,6 +120,15 @@ CREATE TABLE company_members (
         REFERENCES users(id_user) ON DELETE RESTRICT,
     role_company_member VARCHAR(13) NOT NULL
         CHECK (role_company_member IN ('administrador', 'reclutador')),
+    first_name_company_member VARCHAR(120)
+        CONSTRAINT ck_company_members_first_name CHECK (
+            first_name_company_member IS NULL OR length(btrim(first_name_company_member)) > 0),
+    last_name_company_member VARCHAR(120)
+        CONSTRAINT ck_company_members_last_name CHECK (
+            last_name_company_member IS NULL OR length(btrim(last_name_company_member)) > 0),
+    phone_company_member VARCHAR(30)
+        CONSTRAINT ck_company_members_phone CHECK (
+            phone_company_member IS NULL OR length(btrim(phone_company_member)) > 0),
     active_company_member BOOLEAN NOT NULL DEFAULT TRUE,
     joined_at_company_member TIMESTAMPTZ NOT NULL DEFAULT now(),
     PRIMARY KEY (company_id_company_member, user_id_company_member)
@@ -281,7 +290,7 @@ COMMIT;
 -- exigir al menos una habilidad antes de publicar;
 -- validar archivos por contenido y tamaño, y guardar solo su clave segura;
 -- actualizar las fechas de modificación y aplicar baja lógica a cuentas con historial.
--- El formulario pide carrera y ciclo/egreso como texto: resolver id_career y
--- convertir el campo académico antes de insertar un candidate.
--- La primera vacante libre del registro empresarial necesita carrera,
+-- El registro resuelve id_career y guarda el ciclo o el año de egreso,
+-- según la condición académica del postulante.
+-- La primera vacante empresarial se habilitará cuando tenga carrera,
 -- modalidad y descripción estructurada antes de persistirse como job.
