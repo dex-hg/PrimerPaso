@@ -22,5 +22,8 @@ public class ConfiguracionWeb implements WebMvcConfigurer {
         registro.addMapping("/api/registro/**").allowedOrigins(origenes)
                 .allowedMethods("POST", "OPTIONS").allowedHeaders("Content-Type")
                 .maxAge(3600);
+        registro.addMapping("/api/sesion/**").allowedOrigins(origenes)
+                .allowedMethods("GET", "POST", "DELETE", "OPTIONS")
+                .allowedHeaders("Content-Type", "X-CSRF-Token").allowCredentials(true).maxAge(3600);
     }
 }
