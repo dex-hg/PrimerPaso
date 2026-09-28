@@ -61,6 +61,35 @@ class CodificadorContrasenaTests {
         return Stream.of(null, "", "        ", "corta12", "x".repeat(129));
     }
 
+    @Test
+    void verificaLaContrasenaExactaYRechazaOtra() {
+        String contrasena = "  Contraseña Perú 123  ";
+        String hash = codificador.codificar(contrasena);
+        assertThat(codificador.verificar(contrasena, hash)).isTrue();
+        assertThat(codificador.verificar(contrasena.strip(), hash)).isFalse();
+        assertThat(codificador.verificar("Otra contraseña 456", hash)).isFalse();
+    }
+
+    @ParameterizedTest
+    @MethodSource("hashesInvalidos")
+    void rechazaHashesMalformadosSinUsarCostosArbitrarios(String hash) {
+        assertThat(codificador.verificar("Contraseña válida 123", hash)).isFalse();
+    }
+
+    static Stream<String> hashesInvalidos() {
+        return Stream.of(null, "", "texto sin proteger", "{pbkdf2-sha256}999999999$AA==$AA==",
+                "{pbkdf2-sha256}600000$sal-invalida$hash-invalido",
+                "{pbkdf2-sha256}600000$AA==$AA==", "x".repeat(256));
+    }
+
+    @ParameterizedTest
+    @MethodSource("contrasenasInvalidas")
+    void rechazaCredencialesFueraDelContratoSinCalcularHash(String contrasena) {
+        String sal = Base64.getEncoder().encodeToString(new byte[16]);
+        String hash = Base64.getEncoder().encodeToString(new byte[32]);
+        assertThat(codificador.verificar(contrasena, "{pbkdf2-sha256}600000$" + sal + "$" + hash)).isFalse();
+    }
+
     private byte[] derivar(String contrasena, byte[] sal, int iteraciones) throws Exception {
         PBEKeySpec especificacion = new PBEKeySpec(contrasena.toCharArray(), sal, iteraciones, 256);
         try {
