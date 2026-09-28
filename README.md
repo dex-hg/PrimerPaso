@@ -42,6 +42,4 @@ Dentro de `server`:
 
 Las pruebas automatizadas cubren validación, contrato HTTP, respuestas de error sin datos internos, normalización, contraseñas, catálogos y rollback. El contexto de prueba no depende de las credenciales ni de una instancia PostgreSQL disponible.
 
-En esta integración pasaron 40 pruebas automatizadas y el empaquetado del servidor. Se crearon cuentas de postulante y empresa desde el navegador, se revisaron sus filas en PostgreSQL y se comprobaron respuestas `201`, `400` y `409`, incluida la reversión de una cuenta ante un RUC duplicado. Los datos de prueba se retiraron al finalizar. El servidor temporal de verificación se cerró para dejar libre el puerto 8080.
-
 La configuración externa sigue la [documentación de Spring Boot](https://docs.spring.io/spring-boot/reference/features/external-config.html). La transacción de registro aplica el rollback de excepciones de ejecución definido por [Spring Framework](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/transaction/annotation/Transactional.html).
