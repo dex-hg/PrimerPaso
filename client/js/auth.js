@@ -99,24 +99,9 @@ const iniciarFormulariosPorPasos = () => {
     });
 };
 
-const iniciarFormulariosDemostracion = () => {
-    document.querySelectorAll("[data-demo-form]").forEach((formulario) => {
-        formulario.addEventListener("submit", (evento) => {
-            evento.preventDefault();
-            formulario.classList.add("was-validated");
-            if (!formulario.checkValidity()) {
-                mostrarEstadoAutenticacion(formulario, "Revisa los campos indicados.", true);
-                return;
-            }
-            mostrarEstadoAutenticacion(formulario, "Formulario listo. El inicio de sesión se conectará en una siguiente etapa.");
-        });
-    });
-};
-
 document.addEventListener("DOMContentLoaded", () => {
     iniciarConfirmacionesContrasena();
     iniciarFormulariosPorPasos();
-    iniciarFormulariosDemostracion();
     document.querySelectorAll("[data-current-year]").forEach((elemento) => {
         elemento.textContent = String(new Date().getFullYear());
     });

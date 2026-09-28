@@ -16,7 +16,7 @@
     const obtenerBaseApi = () => {
         const esServidorLocal = ["localhost", "127.0.0.1"].includes(window.location.hostname);
         const esVistaEstatica = ["5500", "4173", "8000"].includes(window.location.port);
-        return esServidorLocal && esVistaEstatica ? "http://localhost:8080" : window.location.origin;
+        return esServidorLocal && esVistaEstatica ? `http://${window.location.hostname}:8080` : window.location.origin;
     };
 
     const construirDatos = (formulario) => {
@@ -160,7 +160,7 @@
             }
             formulario.dataset.registrado = "true";
             formulario.querySelectorAll('input[type="password"]').forEach((campo) => { campo.value = ""; });
-            mostrarEstado(formulario, "Cuenta creada correctamente. El inicio de sesión se habilitará en una siguiente etapa.");
+            mostrarEstado(formulario, "Cuenta creada. Ya puedes iniciar sesión.");
             const enlaceAcceso = formulario.querySelector("[data-registro-acceso]");
             if (enlaceAcceso) enlaceAcceso.hidden = false;
         } catch (error) {
