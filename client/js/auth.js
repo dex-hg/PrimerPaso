@@ -1,157 +1,123 @@
 "use strict";
 
-const setAuthStatus = (form, message, isError = false) => {
-    const statusElement = form.querySelector(".auth-form-status");
-
-    if (!statusElement) {
-        return;
-    }
-
-    statusElement.textContent = message;
-    statusElement.classList.toggle("is-error", isError);
+const mostrarEstadoAutenticacion = (formulario, mensaje, esError = false) => {
+    const estado = formulario.querySelector(".auth-form-status");
+    if (!estado) return;
+    estado.textContent = mensaje;
+    estado.classList.toggle("is-error", esError);
 };
 
-const updatePasswordConfirmation = (confirmationField) => {
-    const passwordSelector = confirmationField.dataset.confirmPassword;
-    const passwordField = passwordSelector ? document.querySelector(passwordSelector) : null;
-    const passwordsMatch = !confirmationField.value || confirmationField.value === passwordField?.value;
-
-    confirmationField.setCustomValidity(passwordsMatch ? "" : "Las contraseñas no coinciden.");
+const comprobarConfirmacionContrasena = (confirmacion) => {
+    const selector = confirmacion.dataset.confirmPassword;
+    const contrasena = selector ? document.querySelector(selector) : null;
+    const coincide = !confirmacion.value || confirmacion.value === contrasena?.value;
+    confirmacion.setCustomValidity(coincide ? "" : "Las contraseñas no coinciden.");
 };
 
-const initializePasswordConfirmations = () => {
-    const confirmationFields = document.querySelectorAll("[data-confirm-password]");
-
-    confirmationFields.forEach((confirmationField) => {
-        const passwordSelector = confirmationField.dataset.confirmPassword;
-        const passwordField = passwordSelector ? document.querySelector(passwordSelector) : null;
-        const updateConfirmation = () => updatePasswordConfirmation(confirmationField);
-
-        confirmationField.addEventListener("input", updateConfirmation);
-        passwordField?.addEventListener("input", updateConfirmation);
+const iniciarConfirmacionesContrasena = () => {
+    document.querySelectorAll("[data-confirm-password]").forEach((confirmacion) => {
+        const contrasena = document.querySelector(confirmacion.dataset.confirmPassword);
+        const comprobar = () => comprobarConfirmacionContrasena(confirmacion);
+        confirmacion.addEventListener("input", comprobar);
+        contrasena?.addEventListener("input", comprobar);
     });
 };
 
-const validateStep = (form, stepPanel) => {
-    const confirmationFields = stepPanel.querySelectorAll("[data-confirm-password]");
-    const fields = [...stepPanel.querySelectorAll("input, select, textarea")];
-
-    confirmationFields.forEach(updatePasswordConfirmation);
-    form.classList.add("was-validated");
-
-    const invalidField = fields.find((field) => !field.checkValidity());
-
-    if (invalidField) {
-        invalidField.reportValidity();
-        return false;
-    }
-
-    return true;
+const encontrarCampoInvalido = (panel) => {
+    panel.querySelectorAll("[data-confirm-password]").forEach(comprobarConfirmacionContrasena);
+    return [...panel.querySelectorAll("input, select, textarea")]
+        .find((campo) => !campo.disabled && !campo.checkValidity());
 };
 
-const showRegistrationStep = (form, stepNumber) => {
-    const stepPanels = form.querySelectorAll("[data-step-panel]");
-    const stepIndicators = document.querySelectorAll("[data-step-indicator]");
-
-    stepPanels.forEach((stepPanel) => {
-        const panelStep = Number(stepPanel.dataset.stepPanel);
-        stepPanel.hidden = panelStep !== stepNumber;
+const mostrarPasoRegistro = (formulario, numeroPaso) => {
+    formulario.querySelectorAll("[data-step-panel]").forEach((panel) => {
+        panel.hidden = Number(panel.dataset.stepPanel) !== numeroPaso;
     });
-
-    stepIndicators.forEach((stepIndicator) => {
-        const indicatorStep = Number(stepIndicator.dataset.stepIndicator);
-        const isActive = indicatorStep === stepNumber;
-
-        stepIndicator.classList.toggle("is-active", isActive);
-        stepIndicator.classList.toggle("is-complete", indicatorStep < stepNumber);
-
-        if (isActive) {
-            stepIndicator.setAttribute("aria-current", "step");
-        } else {
-            stepIndicator.removeAttribute("aria-current");
-        }
-    });
-
-    form.dataset.currentStep = String(stepNumber);
-    form.classList.remove("was-validated");
+    formulario.closest(".registration-shell")?.querySelectorAll("[data-step-indicator]")
+        .forEach((indicador) => {
+            const paso = Number(indicador.dataset.stepIndicator);
+            indicador.classList.toggle("is-active", paso === numeroPaso);
+            indicador.classList.toggle("is-complete", paso < numeroPaso);
+            if (paso === numeroPaso) indicador.setAttribute("aria-current", "step");
+            else indicador.removeAttribute("aria-current");
+        });
+    formulario.dataset.currentStep = String(numeroPaso);
+    formulario.classList.remove("was-validated");
     document.querySelector(".registration-heading")?.scrollIntoView({ behavior: "smooth", block: "start" });
 };
 
-const initializeMultiStepForms = () => {
-    const multiStepForms = document.querySelectorAll("[data-multi-step]");
+const indicarCampoInvalido = (formulario, panel, campo) => {
+    mostrarPasoRegistro(formulario, Number(panel.dataset.stepPanel));
+    formulario.classList.add("was-validated");
+    mostrarEstadoAutenticacion(formulario, "Revisa los campos indicados.", true);
+    campo.focus();
+    campo.reportValidity();
+};
 
-    multiStepForms.forEach((form) => {
-        const stepPanels = form.querySelectorAll("[data-step-panel]");
-        const totalSteps = stepPanels.length;
+const iniciarFormulariosPorPasos = () => {
+    document.querySelectorAll("[data-multi-step]").forEach((formulario) => {
+        const paneles = [...formulario.querySelectorAll("[data-step-panel]")];
+        formulario.dataset.currentStep = "1";
 
-        form.dataset.currentStep = "1";
-
-        form.querySelectorAll("[data-next-step]").forEach((nextButton) => {
-            nextButton.addEventListener("click", () => {
-                const currentStep = Number(form.dataset.currentStep || "1");
-                const currentPanel = form.querySelector(`[data-step-panel="${currentStep}"]`);
-
-                if (!currentPanel || !validateStep(form, currentPanel)) {
-                    setAuthStatus(form, "Revisa los campos indicados.", true);
-                    return;
-                }
-
-                setAuthStatus(form, "");
-                showRegistrationStep(form, Math.min(currentStep + 1, totalSteps));
+        formulario.querySelectorAll("[data-next-step]").forEach((boton) => {
+            boton.addEventListener("click", () => {
+                if (formulario.dataset.enviando === "true") return;
+                const paso = Number(formulario.dataset.currentStep || "1");
+                const panel = formulario.querySelector(`[data-step-panel="${paso}"]`);
+                if (!panel) return;
+                window.validarCamposRegistro?.(formulario);
+                const campo = encontrarCampoInvalido(panel);
+                if (campo) return indicarCampoInvalido(formulario, panel, campo);
+                mostrarEstadoAutenticacion(formulario, "");
+                mostrarPasoRegistro(formulario, Math.min(paso + 1, paneles.length));
             });
         });
 
-        form.querySelectorAll("[data-previous-step]").forEach((previousButton) => {
-            previousButton.addEventListener("click", () => {
-                const currentStep = Number(form.dataset.currentStep || "1");
-                setAuthStatus(form, "");
-                showRegistrationStep(form, Math.max(currentStep - 1, 1));
+        formulario.querySelectorAll("[data-previous-step]").forEach((boton) => {
+            boton.addEventListener("click", () => {
+                if (formulario.dataset.enviando === "true") return;
+                mostrarEstadoAutenticacion(formulario, "");
+                mostrarPasoRegistro(formulario, Math.max(Number(formulario.dataset.currentStep) - 1, 1));
             });
         });
 
-        form.addEventListener("submit", (event) => {
-            event.preventDefault();
-
-            const currentStep = Number(form.dataset.currentStep || "1");
-            const currentPanel = form.querySelector(`[data-step-panel="${currentStep}"]`);
-
-            if (!currentPanel || !validateStep(form, currentPanel)) {
-                setAuthStatus(form, "Revisa los campos indicados.", true);
+        formulario.addEventListener("submit", async (evento) => {
+            evento.preventDefault();
+            if (formulario.dataset.enviando === "true" || formulario.dataset.registrado === "true") return;
+            window.validarCamposRegistro?.(formulario);
+            // Revisa todos los pasos, incluso los que el usuario ya completó.
+            for (const panel of paneles) {
+                const campo = encontrarCampoInvalido(panel);
+                if (campo) return indicarCampoInvalido(formulario, panel, campo);
+            }
+            if (typeof window.registrarCuenta !== "function") {
+                mostrarEstadoAutenticacion(formulario, "No se pudo cargar el registro. Recarga la página.", true);
                 return;
             }
-
-            setAuthStatus(form, "Formulario completado. La conexión con el sistema se añadirá en una siguiente etapa.");
+            await window.registrarCuenta(formulario);
         });
     });
 };
 
-const initializeDemoForms = () => {
-    const demoForms = document.querySelectorAll("[data-demo-form]");
-
-    demoForms.forEach((form) => {
-        form.addEventListener("submit", (event) => {
-            event.preventDefault();
-            form.classList.add("was-validated");
-
-            if (!form.checkValidity()) {
-                setAuthStatus(form, "Revisa los campos indicados.", true);
+const iniciarFormulariosDemostracion = () => {
+    document.querySelectorAll("[data-demo-form]").forEach((formulario) => {
+        formulario.addEventListener("submit", (evento) => {
+            evento.preventDefault();
+            formulario.classList.add("was-validated");
+            if (!formulario.checkValidity()) {
+                mostrarEstadoAutenticacion(formulario, "Revisa los campos indicados.", true);
                 return;
             }
-
-            setAuthStatus(form, "Formulario listo. El inicio de sesión se conectará en una siguiente etapa.");
+            mostrarEstadoAutenticacion(formulario, "Formulario listo. El inicio de sesión se conectará en una siguiente etapa.");
         });
-    });
-};
-
-const setAuthCurrentYear = () => {
-    document.querySelectorAll("[data-current-year]").forEach((yearElement) => {
-        yearElement.textContent = String(new Date().getFullYear());
     });
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-    initializePasswordConfirmations();
-    initializeMultiStepForms();
-    initializeDemoForms();
-    setAuthCurrentYear();
+    iniciarConfirmacionesContrasena();
+    iniciarFormulariosPorPasos();
+    iniciarFormulariosDemostracion();
+    document.querySelectorAll("[data-current-year]").forEach((elemento) => {
+        elemento.textContent = String(new Date().getFullYear());
+    });
 });
